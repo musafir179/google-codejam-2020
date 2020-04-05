@@ -1,0 +1,127 @@
+/*
+No matter how long a night, dawn will always break.
+
+Simular saying ... The darkest hour is just before the dawn.
+ ***************************************   ************************8   **********************************
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+ 
+#define int         long long
+#define double      long double
+#define pb          push_back
+#define pf          push_front
+#define pii         pair<int,int>
+#define vi          vector<int>
+#define vii         vector<pii>
+#define all(a)      (a).begin(),(a).end()
+#define rall(a)     (a).rbegin(),(a).rend()
+#define x           first
+#define y           second
+#define endl        '\n'
+#define sz(x)	    (int)(x).size()
+#define fo(i,l,u)   for(i=l;i<u;i++)
+#define rfo(i,l,u)  for(i=l;i>=u;i--)
+#define allfo(s)    for(auto it=(s).begin();it!=(s).end();it++)
+#define _init(b)     memset(b,-1,sizeof(b))
+#define _init0(b)     memset(b,0,sizeof(b))
+#define MOD         1000000007
+
+ 
+ 
+ 
+ 
+ 
+int gcd(int a, int b) {  if (a == 0)  return b; return gcd(b % a, a); }  
+bool mod(double a,double b) {return a/b - floor(a/b);}
+ 
+
+ 
+ 
+ 
+signed main()
+{
+    ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+   int i,j,x,t,var;
+   cin>>t;
+   var=0;
+   while(t--){
+   	int n;
+	var++;
+   	cin>>n;
+//   	vii v;
+   	vector<pair<pii,int>> times,v;
+   	int arr[n+1];
+   	_init(arr);
+
+   	fo(i,0,n){
+   		int a,b;
+   		cin>>a>>b;
+   		v.pb({{a,1},i});
+   		v.pb({{b,0},i});
+   		times.pb({{a,b},i});
+   	}
+
+   	int no=0;
+   	sort(all(v));
+   	unordered_map<int,int> mp;
+   	fo(i,0,v.size()){
+   		x=v[i].x.x;
+
+   		if(mp[x]==0){
+   			no++;
+   			mp[x]=no;
+   			//cout<<x<<" "<<no<<endl;
+   		}
+   	}
+   	set<int> s;
+   	s.insert(1);
+   	s.insert(2);
+   	bool ok=true;
+   	int depth=0;
+   	fo(i,0,v.size()){
+   	//	cout<<depth<<" "<<v[i].x.x<<" "<<v[i].x.y<<" "<<v[i].y<<endl; 
+   		if(v[i].x.y==0){
+   			depth--;
+   			s.insert(arr[v[i].y]);
+   		}
+   		else{
+   			depth++;
+   			if(depth>2){
+   				//cout<<depth<<"<<<<<"<<i<<endl;
+   				ok=false;
+   				break;
+
+   			}
+   			auto it =s.begin();
+   			arr[v[i].y]=*it;
+   			s.erase(it);
+   		}
+   	}
+   	//cout<<endl;
+   	cout<<"Case #"<<var<<": ";
+   	if(!ok){
+   		cout<<"IMPOSSIBLE"<<endl;
+   	}
+   	else{
+   		fo(i,0,n){
+   			if(arr[i]==1){
+   				cout<<"C";
+   			}
+   			else{
+   				cout<<"J";
+   			}
+   		}
+   		cout<<endl;
+   	}
+
+
+   }
+   
+   
+   
+   
+   
+    return 0;
+}
