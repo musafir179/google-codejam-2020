@@ -1,0 +1,74 @@
+/*
+No matter how long a night, dawn will always break.
+
+Simular saying ... The darkest hour is just before the dawn.
+ ***************************************   ************************8   **********************************
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+ 
+#define int         long long
+#define double      long double
+#define pb          push_back
+#define pf          push_front
+#define pii         pair<int,int>
+#define vi          vector<int>
+#define vii         vector<pii>
+#define all(a)      (a).begin(),(a).end()
+#define rall(a)     (a).rbegin(),(a).rend()
+#define x           first
+#define y           second
+#define endl        '\n'
+#define sz(x)	    (int)(x).size()
+#define fo(i,l,u)   for(i=l;i<u;i++)
+#define rfo(i,l,u)  for(i=l;i>=u;i--)
+#define allfo(s)    for(auto it=(s).begin();it!=(s).end();it++)
+#define _init(b)     memset(b,-1,sizeof(b))
+#define _init0(b)     memset(b,0,sizeof(b))
+#define MOD         1000000007
+
+ 
+ 
+ 
+ 
+ 
+int gcd(int a, int b) {  if (a == 0)  return b; return gcd(b % a, a); }  
+bool mod(double a,double b) {return a/b - floor(a/b);}
+ 
+
+ 
+ 
+ 
+signed main()
+{
+    ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+   int i,j,x,t,cas=0;
+	cin>>t;
+	while(t--){
+		cas++;
+		int n;
+		cin>>n;
+		int sum=0;
+		set<int> row[n],col[n];
+		fo(i,0,n){
+			fo(j,0,n){
+				cin>>x;
+				row[i].insert(x);
+				col[j].insert(x);
+				if(i==j)sum+=x;
+			}
+		}
+		int r=0,c=0;
+		fo(i,0,n){
+			if(row[i].size()!=n)r++;
+			if(col[i].size()!=n)c++;
+		}
+		cout<<"Case #"<<cas<<": "<<sum<<" "<<r<<" "<<c<<endl;
+	}   
+   
+   
+   
+   
+    return 0;
+}
