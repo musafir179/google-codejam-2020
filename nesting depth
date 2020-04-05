@@ -1,0 +1,86 @@
+/*
+No matter how long a night, dawn will always break.
+
+Simular saying ... The darkest hour is just before the dawn.
+ ***************************************   ************************8   **********************************
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+ 
+#define int         long long
+#define double      long double
+#define pb          push_back
+#define pf          push_front
+#define pii         pair<int,int>
+#define vi          vector<int>
+#define vii         vector<pii>
+#define all(a)      (a).begin(),(a).end()
+#define rall(a)     (a).rbegin(),(a).rend()
+#define x           first
+#define y           second
+#define endl        '\n'
+#define sz(x)	    (int)(x).size()
+#define fo(i,l,u)   for(i=l;i<u;i++)
+#define rfo(i,l,u)  for(i=l;i>=u;i--)
+#define allfo(s)    for(auto it=(s).begin();it!=(s).end();it++)
+#define _init(b)     memset(b,-1,sizeof(b))
+#define _init0(b)     memset(b,0,sizeof(b))
+#define MOD         1000000007
+
+ 
+ 
+ 
+ 
+ 
+int gcd(int a, int b) {  if (a == 0)  return b; return gcd(b % a, a); }  
+bool mod(double a,double b) {return a/b - floor(a/b);}
+ 
+
+ 
+ 
+ 
+signed main()
+{
+    ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+   int i,j,x,t,cas=0,d,n;
+   cin>>t;
+   while(t--){
+   	cas++;
+   	string s,s1="";
+   	cin>>s;
+   	int depth=0;
+   	n=s.length();
+   	fo(i,0,n){
+   		x=s[i]-'0';
+   		if(depth>x){
+   			d=depth-x;
+   			fo(j,0,d){
+   				s1+=')';
+   				depth--;
+   			}
+   		}
+   		if(depth<x){
+   			d=x-depth;
+   			fo(j,0,d){
+   				s1+='(';
+   				depth++;
+   			}
+   		}
+   		s1+=s[i];
+
+   	}
+
+   	while(depth>0){
+   		s1+=')';
+   		depth--;
+   	}
+   	cout<<"Case #"<<cas<<": "<<s1<<endl;
+   }
+   
+   
+   
+   
+   
+    return 0;
+}
